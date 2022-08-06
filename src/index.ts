@@ -2,12 +2,19 @@
  * @Author: hqwx.com
  * @Date: 2022-08-05 22:21:08
  * @LastEditors: WRG(woter_wang@live.com)
- * @LastEditTime: 2022-08-06 02:47:06
+ * @LastEditTime: 2022-08-06 22:29:25
  * @😍: 😃😃
  */
-import Car from '@/components/car/index';
-// const Car = require('@/components/car/index');
-console.log("🚀 ~ file: index.ts ~ line 10 ~ Car", Car)
-let liftCar = Car({})
-console.log("🚀 ~ file: index.ts ~ line 12 ~ liftCar.floorSelector", liftCar)
-liftCar.joinPerson({weight:100,[Symbol()]:10})
+import Lift from '@/components/lift/lift';
+const config = {
+	bodyWeight: 10,//乘客重量
+	maxFloor: 10,//最高楼层
+	minFloor: -10,//最低楼层
+	storeyHeight: 10,//楼层高度
+	waitTime: 10,//等待时间(ms)
+	closeBtnTapWaitTime: 10,//按下关门按钮后的等待时间(ms)
+	carMaxload: 2000,//最大承重(kg)
+	maxCapacity: 10,//最大容量(pcs)
+
+}
+Lift(config)

@@ -2,7 +2,7 @@
  * @Author: hqwx.com
  * @Date: 2022-08-06 10:48:21
  * @LastEditors: WRG(woter_wang@live.com)
- * @LastEditTime: 2022-08-06 15:05:08
+ * @LastEditTime: 2022-08-06 22:28:38
  * @😍: 😃😃
  */
 interface AudioI {
@@ -14,8 +14,8 @@ interface AudioI {
 class audioManger {
 	private audioInstance: HTMLAudioElement = new Audio()
 
-	constructor(config: AudioI) {
-		this.init(config)
+	constructor() {
+		// this.init(config)
 	}
 
 	addEvent (eventNameList: string[], allback: () => void) {
@@ -30,15 +30,15 @@ class audioManger {
 		})
 	}
 
-	pauseAudio(){
-		if(this.audioInstance.played){
+	pauseAudio () {
+		if (this.audioInstance.played) {
 			this.audioInstance.pause()
-		}else{
+		} else {
 			console.log('audio no playing');
 		}
 	}
 
-	init (config: AudioI) {
+	play (config: AudioI) {
 		let params = Object.assign({
 			loop: false,
 			autoPlay: true,
@@ -71,14 +71,10 @@ class audioManger {
 		}
 
 		this.audioInstance.onplaying = (e: Event) => {
-			console.log("🚀 ~ file: audioClass.ts ~ line 66 ~ audioManger ~ init ~ e", e)
 		}
 
 	}
 }
-
-function AudioManger (config: AudioI) {
-	return new audioManger(config)
-}
+const AudioManger = new audioManger()
 
 export default AudioManger
