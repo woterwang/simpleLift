@@ -2,7 +2,7 @@
  * @Author: hqwx.com
  * @Date: 2022-08-05 21:52:21
  * @LastEditors: WRG(woter_wang@live.com)
- * @LastEditTime: 2022-08-06 22:27:06
+ * @LastEditTime: 2022-08-06 22:37:58
  * @😍: 😃😃
  */
 import AudioManger from '@/libs/audioClass';
@@ -38,7 +38,12 @@ class Car {
 
 	/* 减少乘客 */
 	getOff (count: number) {
-		this.Persons.splice(0, count)
+		let cpList = this.Persons.slice()
+		let randomIndex = () => Math.ceil(Math.random() * cpList.length)
+		while (count > 0) {
+			this.Persons.splice(randomIndex(), 1)
+			--count
+		}
 		this.checkOverWeight()
 		this.checkOvercrowding()
 	}
